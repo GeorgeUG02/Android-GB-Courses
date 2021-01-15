@@ -9,6 +9,7 @@ public class Main {
     public static final char DOT_X = 'X';
     public static final char DOT_O = 'O';
     public static char[][] map;
+    public static char[][] map5;
     public static Scanner sc = new Scanner(System.in);
     public static Random rand = new Random();
     public static void main(String[] args) {
@@ -58,33 +59,53 @@ public class Main {
         return false;
     }
     public static boolean checkWin5(char symb) {
-        int n=0,m=0,k=0,l=0;
-        for(int i=0;i<5;i++){
-            for (int j=0;j<5;j++){
-                if (map[i][j]==symb) n++;
-                if (map[j][i]==symb) m++;
-            }
-            if (map[i][i]==symb)  k++;
-            if (map[i][4-i]==symb) l++;
-            if (n==4) return true;
-            if (m==4) return true;
-            n=0;
-            m=0;
-        }
-        if (k==4) return true;
-        if (l==4) return true;
-        k=0;
-        l=0;
+        int n=0,m=0,k=0,l=0,a=0,b=0,c=0,d=0;
         for (int i=0;i<4;i++){
-            if (map[i+1][i]==symb) n++;
-            if (map[i+1][3-i]==symb) m++;
-            if (map[i][i+1]==symb) k++;
-            if (map[3-i][i+1]==symb) l++;
+            if(map5[i][i]==symb) a++;
+            if(map5[i][3-i]==symb) b++;
+            if(map5[i+1][i+1]==symb) c++;
+            if(map5[i+1][4-i]==symb) d++;
+            if (map5[i+1][i]==symb) n++;
+            if (map5[i+1][3-i]==symb) m++;
+            if (map5[i][i+1]==symb) k++;
+            if (map5[3-i][i+1]==symb) l++;
         }
+        if(a==4) return true;
+        if(b==4) return true;
+        if(c==4) return true;
+        if(d==4) return true;
         if (n==4) return true;
         if (m==4) return true;
         if (k==4) return true;
         if (l==4) return true;
+        a=0;
+        b=0;
+        c=0;
+        d=0;
+        n=0;
+        m=0;
+        k=0;
+        l=0;
+        for (int i=0;i<4;i++){
+            for(int j=0;j<4;j++){
+                if (map5[i][j]==symb) a++;
+                if (map5[j][i]==symb) b++;
+                if (map5[i+1][j]==symb) c++;
+                if (map5[j+1][i]==symb) d++;
+                if (map5[i][j+1]==symb) n++;
+                if (map5[j][i+1]==symb) m++;
+                if (map5[i+1][j+1]==symb) k++;
+                if (map5[j+1][i+1]==symb) l++;
+            }
+            if(a==4) return true;
+            if(b==4) return true;
+            if(c==4) return true;
+            if(d==4) return true;
+            if (n==4) return true;
+            if (m==4) return true;
+            if (k==4) return true;
+            if (l==4) return true;
+        }
         return false;
     }
 
