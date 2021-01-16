@@ -105,6 +105,14 @@ public class Main {
             if (m==4) return true;
             if (k==4) return true;
             if (l==4) return true;
+            a=0;
+            b=0;
+            c=0;
+            d=0;
+            n=0;
+            m=0;
+            k=0;
+            l=0;
         }
         return false;
     }
