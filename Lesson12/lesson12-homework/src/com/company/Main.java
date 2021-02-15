@@ -27,8 +27,8 @@ public class Main {
             }
         });
         executorService.execute(()->{
-            for(int i=0;i<HALF;i++){
-                a2[i] = (float)(a2[i] * Math.sin(0.2f + i / 5) * Math.cos(0.2f + i / 5) * Math.cos(0.4f + i / 2));
+            for(int i=HALF;i<SIZE;i++){
+                a2[i-HALF] = (float)(a2[i] * Math.sin(0.2f + i / 5) * Math.cos(0.2f + i / 5) * Math.cos(0.4f + i / 2));
             }
         });
         executorService.shutdown();
