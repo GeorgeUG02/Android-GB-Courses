@@ -2,6 +2,7 @@ package com.company;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.CyclicBarrier;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class Car implements Runnable{
     private static int CARS_COUNT;
@@ -12,6 +13,7 @@ public class Car implements Runnable{
     private static CyclicBarrier cb;
     private static CountDownLatch cdl1;
     private static CountDownLatch cdl2;
+    private static ReentrantLock rl=new ReentrantLock();
     public Car(Race race, int speed, CountDownLatch cdl1, CountDownLatch cdl2) {
         this.cdl1=cdl1;
         this.cdl2=cdl2;
@@ -47,10 +49,12 @@ public class Car implements Runnable{
         for (int i=0;i<race.getStages().size();i++){
             race.getStages().get(i).go(this);
         }
+        rl.lock();
         if(!flag) {
             System.out.println(getName() + " - WIN");
             flag=true;
         }
+        rl.unlock();
         cdl2.countDown();
     }
 }
